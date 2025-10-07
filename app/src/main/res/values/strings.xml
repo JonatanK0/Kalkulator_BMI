@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Kalkulator BMI</string>
+    <string name="header_text">Oblicz swoje BMI</string>
+    <string name="weight_hint">Waga (kg)</string>
+    <string name="height_hint">Wzrost (cm)</string>
+    <string name="calculate_button">Oblicz</string>
+    <string name="bmi_result_prefix">Twoje BMI:</string>
+    <string name="error_empty_fields">Pola nie mogą być puste!</string>
+    <string name="error_zero_values">Wartości muszą być większe od zera!</string>
+    <string name="bmi_underweight">Niedowaga</string>
+    <string name="bmi_normal">Waga prawidłowa</string>
+    <string name="bmi_overweight">Nadwaga</string>
+    <string name="bmi_obesity">Otyłość</string>
+</resources>
