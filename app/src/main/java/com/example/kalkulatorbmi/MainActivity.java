@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.app.AlertDialog;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,8 +25,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences prefs = getSharedPreferences("bmi_prefs", MODE_PRIVATE);
+        String savedWeight = prefs.getString("weight", "");
+        String savedHeight = prefs.getString("height", "");
         weightInput = findViewById(R.id.weightInput);
         heightInput = findViewById(R.id.heightInput);
+        weightInput.setText(savedWeight);
+        heightInput.setText(savedHeight);
         calculateButton = findViewById(R.id.calculateButton);
         resultText = findViewById(R.id.resultText);
         interpretationText = findViewById(R.id.interpretationText);
@@ -48,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
     private void calculateBmi() {
         String weightStr = weightInput.getText().toString();
         String heightStr = heightInput.getText().toString();
+
+        // Save the entered weight and height to SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("bmi_prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("weight", weightStr);
+        editor.putString("height", heightStr);
+        editor.apply();
 
         if (weightStr.isEmpty() || heightStr.isEmpty()) {
             new AlertDialog.Builder(this)
